@@ -1,0 +1,16 @@
+=== COVID-19 cases voor {date} ===
+
+Leeswijzer tabel:
+ * V: C - Vandaag, aantal cases geregistreerd
+ * V: Z - Vandaag, aantal ziekenhuisopnames
+ * V: O - Vandaag, aantal overledenen
+ * G: C - tov. gisteren, aantal cases geregistreerd
+ * G: Z - tov. gisteren, aantal ziekenhuisopnames
+ * G: O - tov. gisteren, aantal overledenen
+
+{outputTable}
+
+{resultsTable}
+
+Het aantal nieuwe besmettingen per gemeente, gevolgd door het totaal aantal besmettingen sinds het begin van de coronacrisis:
+{regionalList}
