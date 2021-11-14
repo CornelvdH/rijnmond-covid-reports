@@ -1,0 +1,7 @@
+=== COVID-19 - gemiddeld aantal besmettingen (7-daags gemiddelde) ===
+
+Leeswijzer tabel:
+ * In de linkerkolom de dag waarop het gemiddelde van de 7 dagen ervoor is gemeten
+ * Daarnaast het gemiddeld aantal besmettingen per dag
+ 
+{resultsTable}

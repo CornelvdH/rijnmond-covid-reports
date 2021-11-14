@@ -2,10 +2,15 @@ const axios = require('axios');
 const csv = require('csv-parser');
 const Readable = require('stream').Readable;
 
-class CsvDataConnector {
+const GenericDataConnector = require('./GenericDataConnector');
+
+class CsvDataConnector extends GenericDataConnector {
     constructor(){
+        super();
+
         this.csvParseOptions = {separator: ';'};
         this.municipalityCodes = require('../config/municipality_codes.json');
+        this.fetchUrl = 'https://data.rivm.nl/covid-19/COVID-19_aantallen_gemeente_cumulatief.csv'
     }
 
     async fetch(){
@@ -13,7 +18,7 @@ class CsvDataConnector {
 
         let reportConfig = {
             method: 'get',
-            url: 'https://data.rivm.nl/covid-19/COVID-19_aantallen_gemeente_cumulatief.csv'
+            url: _this.fetchUrl
         };
           
         let reportData = await axios(reportConfig).catch(err => console.log(err));
@@ -66,7 +71,12 @@ class CsvDataConnector {
     }
 
     getData(reportDate){
-        return this.getReportDataForSpecificDate(reportDate);
+        if(reportDate){
+            return this.getReportDataForSpecificDate(reportDate);
+        } else {
+            return this.reportData;
+        }
+        
     }
 
 }

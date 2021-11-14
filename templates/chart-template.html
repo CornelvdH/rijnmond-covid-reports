@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="d-flex justify-content-between mb-2">
+        <span></span>
+        <button id="save" class="btn btn-success">
+            Downloaden als afbeelding
+        </button>
+    </div>
+    
+
+    <div>
+        <canvas id="chart"></canvas>
+    </div>
+
+    <a id="download-link" class="d-none"></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        var labels = <labels>
+
+        var data = {
+            labels: labels,
+            datasets: <dataSets>
+        };
+
+        var config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        var chart = new Chart(
+            document.getElementById('chart'),
+            config
+        );
+
+    </script>
+
+    <script>
+        $("#save").click(function(e){
+            // console.log('click');
+            var link = document.getElementById('download-link');
+            link.setAttribute('download', 'covid_grafiek.png');
+
+            var image = document.getElementById('chart').toDataURL("image/png").replace("image/png", "image/octet-stream");
+            link.setAttribute('href', image);
+
+            link.click();
+        });
+        
+    </script>
+</body>
+</html>

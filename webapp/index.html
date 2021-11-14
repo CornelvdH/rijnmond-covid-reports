@@ -1,61 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="rijnmond-covid-reports">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rijnmond COVID Reports</title>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    
+
 </head>
 <body>
     
-    <div class="col-lg-8 mx-auto p-3 py-md-5">
-        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <div class="container-fluid mx-auto p-3 py-md-5">
+        <header class="d-flex align-items-center justify-content-between pb-3 mb-5 border-bottom">
             <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
                 <img src="https://www.rijnmond.nl/Content/Images/rijnmond/logo.png" class="me-4">
                 <span class="fs-4 mt-2">COVID-19 Rapporten</span>
             </a>
+            <div class="col-md-4">
+                <strong>Hoe werkt het?</strong><br>
+                <p>Het RIVM brengt elke dag rond 15:15 een open data bestand uit, met gegevens bijgewerkt tot 10:00 uur die dag. Deze tool genereert 5 minuten later een rapport dat alleen de gegevens van de gemeenten in het Rijnmond-gebied uitpakt.</p>
+            </div>
         </header>
         
         <main>
-            <h1>Hoe werkt het?</h1>
-            <p class="fs-5 col-md-8">
-                Het RIVM brengt elke dag rond 15:15 een open data bestand uit, met gegevens bijgewerkt tot 10:00 uur die dag. Deze tool genereert 5 minuten later een rapport dat alleen de gegevens van de gemeenten in het Rijnmond-gebied uitpakt.<br>
-            </p>
-            
-            <div class="mb-5">
-                <a href="/report/latest-text-report" class="btn btn-primary btn-lg px-4" target="_blank">Download laatste versie</a>
-            </div>
-            
-            <hr class="col-3 col-md-2 mb-5">
-            
-            <div class="row g-5">
-                <div class="col-md-6">
-                    <h2>Andere rapporten</h2>
-                    <!-- <p></p> -->
-                    <ul id="report-list">
-                        
-                    </ul>
-                </div>
-                
-                <div class="col-md-6">
-                    <h2>Samenvatting - <span id="summary-date"></span></h2>
-                    <!-- <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p> -->
-                    <ul id="summary">
-
-                    </ul>
-                </div>
-            </div>
+            <ng-view></ng-view>
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
             Tool gebouwd voor RTV Rijnmond door Cornel van der Heiden &middot; &copy; 2021
         </footer>
     </div>
     
-    
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/webapp/js/general.js"></script>
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="/node_modules/angular-route/angular-route.min.js"></script>
+    <script src="/node_modules/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="/node_modules/moment/min/moment-with-locales.min.js"></script>
+    <script src="/node_modules/angular-moment/angular-moment.min.js"></script>
+    <script src="/webapp/js/app.js"></script>
+    <script src="/webapp/js/MainController.js"></script>
+
 </body>
 </html>

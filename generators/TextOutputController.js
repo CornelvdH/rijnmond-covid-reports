@@ -4,8 +4,12 @@ const path = require('path');
 const Table = require('cli-table-no-color');
 const chars = {'top': '=' , 'top-mid': '=' , 'top-left': '|' , 'top-right': '|', 'bottom': '=' , 'bottom-mid': '=' , 'bottom-left': '|' , 'bottom-right': '|', 'left': '|' , 'left-mid': '|' , 'mid': '-' , 'mid-mid': '-', 'right': '|' , 'right-mid': '|' , 'middle': '|' };
 
-class TextOutputController {
+const GenericOutputController = require('./GenericOutputController');
+
+class TextOutputController extends GenericOutputController {
     constructor(){
+        super();
+        
         this.outputTable = new Table({
             head: ['Gemeente', 'V: C', 'V: Z', 'V: O', 'G: C', 'G: Z', 'G: O'],
             colWidths: [40, 10, 10, 10, 10, 10, 10],
@@ -27,6 +31,19 @@ class TextOutputController {
         this.getTemplate();
     }
 
+    static describe(){
+        return {
+            description: 'Report generated as plain text file, containing all report items (confirmed cases, hospital admissions, deaths)',
+            attributes: {
+                // REPORT_TYPE: [
+                //     'CASE_REPORT',
+                //     'HOSPITAL_REPORT',
+                //     'DEATH_REPORT'
+                // ]
+            }
+        }
+    }
+
     getTemplate(){
         this.template = fs.readFileSync(path.join(__dirname, '..', 'templates/text-output.txt')).toString();
     }
@@ -45,11 +62,11 @@ class TextOutputController {
         return mergedData;
     }
 
-    generate(dataRetrievalDelegate, targetDate){
+    generate(dataRetrievalDelegate, targetDate, attributes){
         const _this = this;
 
         _this.dataRetrievalDelegate = dataRetrievalDelegate;
-        _this.targetDate = targetDate;
+        _this.targetDate = new Date(targetDate);
 
         let dateBefore = new Date(_this.targetDate);
         dateBefore.setDate(dateBefore.getDate() - 1);

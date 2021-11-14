@@ -11,13 +11,23 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.8.2",
+    "angular-filter": "^0.5.17",
+    "angular-moment": "^1.3.0",
+    "angular-route": "^1.8.2",
     "axios": "^0.24.0",
+    "body-parser": "^1.19.0",
     "bootstrap": "^5.1.3",
     "cli-table": "^0.3.6",
     "cli-table-no-color": "^0.4.0-dev",
     "cron": "^1.8.2",
     "csv-parser": "^3.0.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "jquery": "^3.6.0"
+    "handlebars": "^4.7.7",
+    "html-pdf-node": "^1.0.7",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.12",
+    "uuid": "^8.3.2"
   }
 }

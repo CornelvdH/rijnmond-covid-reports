@@ -1,7 +1,11 @@
 const fs = require('fs');
 
-class TextOutputController {
+const GenericOutputController = require('./GenericOutputController');
+
+class TextOutputController extends GenericOutputController {
     constructor(){
+        super();
+        
         this.output = [];
         this.results = {};
 
@@ -12,11 +16,24 @@ class TextOutputController {
         this.regionalList = [];
     }
 
-    generate(dataRetrievalDelegate, targetDate){
+    static describe(){
+        return {
+            description: 'JSON object with report data for a specific date',
+            attributes: {
+                // REPORT_TYPE: [
+                //     'CASE_REPORT',
+                //     'HOSPITAL_REPORT',
+                //     'DEATH_REPORT'
+                // ]
+            }
+        }
+    }
+
+    generate(dataRetrievalDelegate, targetDate, attributes){
         const _this = this;
 
         _this.dataRetrievalDelegate = dataRetrievalDelegate;
-        _this.targetDate = targetDate;
+        _this.targetDate = new Date(targetDate);
 
         let dateBefore = new Date(_this.targetDate);
         dateBefore.setDate(dateBefore.getDate() - 1);

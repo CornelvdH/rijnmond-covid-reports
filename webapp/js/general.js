@@ -11,4 +11,10 @@ $(function(){
         $("#summary").append('<li>Totaal nieuwe ziekenhuisopnames: <strong>' + data.results.hospitalAdmissionsSinceYesterday + '</strong></li>');
         $("#summary").append('<li>Totaal nieuwe overleden: <strong>' + data.results.deceasedSinceYesteray + '</strong></li>');
     });
+
+    $.getJSON('/report/week-average', null, function(data){
+        $("#average").append('<li>Besmettingen: <strong>' + data.weekAverage.cases + '</strong></li>');
+        $("#average").append('<li>Nieuwe ziekenhuisopnames: <strong>' + data.weekAverage.hospital + '</strong></li>');
+        $("#average").append('<li>Overleden: <strong>' + data.weekAverage.deceased + '</strong></li>');
+    });
 });
